@@ -14,10 +14,12 @@ $command = new class() extends Command {
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $helper = $this->getHelper('question');
-        $question = new Question('Test the input behavior: ');
+        $section = $output->section();
 
-        $helper->ask($input, $output, $question);
+        $section->writeln("Test");
+        $io = new SymfonyStyle($input, $output);
+
+        $io->ask('Test the input behavior');
 
         return self::SUCCESS;
     }
